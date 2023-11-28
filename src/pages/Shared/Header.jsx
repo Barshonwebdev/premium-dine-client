@@ -16,7 +16,7 @@ const Header = () => {
     );
     return (
       <div>
-        <div className="navbar bg-base-100">
+        <div className="navbar fixed z-10 bg-black bg-opacity-30 max-w-screen-lg text-white">
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -51,7 +51,7 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <a className="btn">Button</a>
+            <a className="btn btn-neutral">Login</a>
           </div>
         </div>
       </div>
