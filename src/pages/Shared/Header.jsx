@@ -1,17 +1,18 @@
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const navOptions = (
       <>
         <li>
-          <a>Home</a>
+          <Link to='/'>Home</Link>
         </li>
         <li>
-          <a>Menu</a>
-          
+          <Link to='/menu'>Our Menu</Link>
         </li>
         <li>
-          <a>Contact</a>
+          <Link to='/contact'>Contact</Link>
         </li>
+        
       </>
     );
     return (
@@ -39,7 +40,7 @@ const Header = () => {
                   />
                 </svg>
               </div>
-              <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              <ul className="menu text-black menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                {navOptions}
               </ul>
             </div>
