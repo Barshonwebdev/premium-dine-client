@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../components/Sectiontitle/SectionTitle';
 import MenuItem from '../../Shared/MenuItem';
 import useMenu from '../../../hooks/useMenu';
