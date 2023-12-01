@@ -1,5 +1,4 @@
 import React from 'react';
-import { Parallax, Background } from "react-parallax";
 const Cover = ({img, heading, subHeading}) => {
     return (
       <div
