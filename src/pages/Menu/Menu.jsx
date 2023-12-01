@@ -10,6 +10,7 @@ const Menu = () => {
             </Helmet>
 
             <Cover heading={'Our Menu'} subHeading={'Would you like to try a dish ?'} img={coverImage}></Cover>
+            
         </div>
     );
 };

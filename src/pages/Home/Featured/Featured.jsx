@@ -5,7 +5,7 @@ import './Featured.css'
 const Featured = () => {
     return (
       <div className="featured-bg bg-fixed md:pb-32 md:pt-10 md:px-10 my-10">
-        <section className='mb-20'>
+        <section className='mb-20 text-gray-500'>
           <SectionTitle
             subHeading={"check it out"}
             heading={"Featured items"}
