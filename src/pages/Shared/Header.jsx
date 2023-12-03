@@ -2,18 +2,30 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
     const navOptions = (
-      <>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/menu'>Our Menu</Link>
-        </li>
-        <li>
-          <Link to='/contact'>Contact</Link>
-        </li>
+      <div className="md:flex md:space-x-5 ">
         
-      </>
+          <li>
+            <Link to="/">
+              <button className="btn btn-ghost">Home</button>
+            </Link>
+          </li>
+          <li>
+            <Link to="/menu">
+              <button className="btn btn-ghost">Our Menu</button>
+            </Link>
+          </li>
+          <li>
+            <Link to="/shop">
+              <button className="btn btn-ghost">Our Shop</button>
+            </Link>
+          </li>
+          
+        
+       
+
+       
+        
+      </div>
     );
     return (
       <div>
@@ -47,7 +59,7 @@ const Header = () => {
             <a className="btn btn-ghost text-xl">Premium Dine</a>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
+            <ul className=" px-1">
              {navOptions}
             </ul>
           </div>
