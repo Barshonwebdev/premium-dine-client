@@ -15,7 +15,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/shop">
+            <Link to="/shop/salad">
               <button className="btn btn-ghost">Our Shop</button>
             </Link>
           </li>

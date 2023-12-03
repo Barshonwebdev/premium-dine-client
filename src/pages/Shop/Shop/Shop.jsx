@@ -5,9 +5,16 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useMenu from '../../../hooks/useMenu';
 import OrderFood from '../OrderFood/OrderFood';
+import { useParams } from 'react-router-dom';
+import { Helmet } from "react-helmet-async";
+
 const Shop = () => {
-    const [tabIndex,setTabIndex]= useState(0);
+    const categories=['salad', 'pizza', 'soup', 'dessert', 'drinks'];
     const [menu]=useMenu();
+    const {category}=useParams();
+    const initialIndex=categories.indexOf(category);
+    const [tabIndex,setTabIndex]= useState(initialIndex);
+    console.log(category);
      const dessert = menu.filter((item) => item.category === "dessert");
      const soup = menu.filter((item) => item.category === "soup");
      const salad = menu.filter((item) => item.category === "salad");
@@ -15,6 +22,10 @@ const Shop = () => {
      const drinks = menu.filter((item) => item.category === "drinks");
     return (
       <div>
+        <Helmet>
+          <title>Premium Dine | Shop</title>
+        </Helmet>
+
         <Cover img={shopImage} heading={"Order Food"}></Cover>
 
         <div className="mt-10 ">
@@ -45,7 +56,6 @@ const Shop = () => {
             <TabPanel>
               <OrderFood items={drinks}></OrderFood>
             </TabPanel>
-            
           </Tabs>
         </div>
       </div>
