@@ -19,6 +19,11 @@ const Header = () => {
               <button className="btn btn-ghost">Our Shop</button>
             </Link>
           </li>
+          <li>
+            <Link to="/login">
+              <button className="btn btn-ghost">Login</button>
+            </Link>
+          </li>
           
         
        

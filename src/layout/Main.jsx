@@ -1,14 +1,16 @@
 import Header from '../pages/Shared/Header';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../pages/Shared/Footer';
 
 const Main = () => {
+    const location=useLocation();
+    const noHeaderFooter=location.pathname.includes('login');
     return (
-        <div>
-            <Header></Header>
-            <Outlet></Outlet>
-            <Footer></Footer>
-        </div>
+      <div>
+        {noHeaderFooter || <Header></Header>}
+        <Outlet></Outlet>
+        {noHeaderFooter || <Footer></Footer>}
+      </div>
     );
 };
 
