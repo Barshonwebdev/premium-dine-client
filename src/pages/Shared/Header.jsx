@@ -1,35 +1,47 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Header = () => {
+  const {user,logout}=useContext(AuthContext);
+  const handleLogout=()=>{
+    logout()
+    .then(()=>{
+
+    })
+  }
     const navOptions = (
       <div className="md:flex md:space-x-5 ">
-        
-          <li>
-            <Link to="/">
-              <button className="btn btn-ghost">Home</button>
-            </Link>
-          </li>
-          <li>
-            <Link to="/menu">
-              <button className="btn btn-ghost">Our Menu</button>
-            </Link>
-          </li>
-          <li>
-            <Link to="/shop/salad">
-              <button className="btn btn-ghost">Our Shop</button>
-            </Link>
-          </li>
-          <li>
-            <Link to="/login">
-              <button className="btn btn-ghost">Login</button>
-            </Link>
-          </li>
-          
-        
-       
-
-       
-        
+        <li>
+          <Link to="/">
+            <button className="btn btn-ghost">Home</button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/menu">
+            <button className="btn btn-ghost">Our Menu</button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/shop/salad">
+            <button className="btn btn-ghost">Our Shop</button>
+          </Link>
+        </li>
+        <li>
+          {user ? (
+            <>
+              <Link>
+                <button onClick={handleLogout} className="btn btn-ghost">Logout</button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <button className="btn btn-ghost">Login</button>
+              </Link>
+            </>
+          )}
+        </li>
       </div>
     );
     return (
@@ -68,9 +80,7 @@ const Header = () => {
              {navOptions}
             </ul>
           </div>
-          <div className="navbar-end">
-            <a className="btn btn-neutral">Login</a>
-          </div>
+          
         </div>
       </div>
     );
