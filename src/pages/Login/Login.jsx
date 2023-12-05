@@ -6,11 +6,15 @@ import {
 } from 'react-simple-captcha';
 import { AuthContext } from '../../context/AuthProvider';
 import { Helmet } from 'react-helmet-async';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
   const captchaRef=useRef();
   const [disabled,setDisabled]=useState(true);
-
+  const location=useLocation();
+  const navigate=useNavigate();
   const {signInUser}= useContext(AuthContext);
+
+  const from=location.state?.from?.pathname || '/';
   useEffect(()=>{
     loadCaptchaEnginge(4); 
   },[])
@@ -24,7 +28,9 @@ const Login = () => {
         .then(result=>{
           const loggedInUser=result.user;
           console.log(loggedInUser);
+          navigate(from, { replace: true });
         })
+        
     }
 
     const handleCaptcha=()=>{
@@ -81,13 +87,9 @@ const Login = () => {
                   className="input input-bordered"
                   ref={captchaRef}
                   required
+                  onBlur={handleCaptcha}
                 />
-                <button
-                  onClick={handleCaptcha}
-                  className="btn btn-outline btn-sm mt-5 mx-16"
-                >
-                  Validate
-                </button>
+                
               </div>
               <div className="form-control mt-6">
                 <input
