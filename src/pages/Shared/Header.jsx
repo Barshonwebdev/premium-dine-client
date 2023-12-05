@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
   const {user,logout}=useContext(AuthContext);
@@ -27,17 +28,23 @@ const Header = () => {
             <button className="btn btn-ghost">Our Shop</button>
           </Link>
         </li>
-        <li>
+        <button className="btn">
+          <FaShoppingCart className="text-green-800 text-xl"></FaShoppingCart>
+          <div className="badge badge-neutral">+0</div>
+        </button>
+        <li> 
           {user ? (
             <>
               <Link>
-                <button onClick={handleLogout} className="btn btn-ghost">Logout</button>
+                <button onClick={handleLogout} className="btn btn-neutral">
+                  Logout
+                </button>
               </Link>
             </>
           ) : (
             <>
               <Link to="/login">
-                <button className="btn btn-ghost">Login</button>
+                <button className="btn btn-neutral">Login</button>
               </Link>
             </>
           )}
