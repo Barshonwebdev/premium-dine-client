@@ -5,11 +5,12 @@ import {
   validateCaptcha,
 } from 'react-simple-captcha';
 import { AuthContext } from '../../context/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 const Login = () => {
   const captchaRef=useRef();
   const [disabled,setDisabled]=useState(true);
 
-  const {signInUser,logout}= useContext(AuthContext);
+  const {signInUser}= useContext(AuthContext);
   useEffect(()=>{
     loadCaptchaEnginge(4); 
   },[])
@@ -21,8 +22,8 @@ const Login = () => {
         console.log(email, password);
         signInUser(email,password)
         .then(result=>{
-          const user=result.user;
-          console.log(user);
+          const loggedInUser=result.user;
+          console.log(loggedInUser);
         })
     }
 
@@ -42,7 +43,6 @@ const Login = () => {
         <div className="hero-content flex-col md:space-x-28 lg:flex-row">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login!</h1>
-            
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleLogin} className="card-body">
@@ -100,6 +100,9 @@ const Login = () => {
             </form>
           </div>
         </div>
+        <Helmet>
+          <title>Premium Dine | Login</title>
+        </Helmet>
       </div>
     );
 };
