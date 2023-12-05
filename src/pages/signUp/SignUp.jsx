@@ -2,19 +2,27 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../context/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
      const {
        register,
        handleSubmit,
+       reset,
        formState: { errors },
      } = useForm();
-     const {createUser}=useContext(AuthContext);
+     const {createUser,updateUserProfile}=useContext(AuthContext);
+     const navigate=useNavigate();
      const onSubmit = (data) => {
             createUser(data.email,data.password)
             .then(result=>{
                 const loggedInUser=result.user;
                 console.log(loggedInUser);
+                updateUserProfile(data.name,data.photoURL)
+                .then(()=>{
+                    reset();
+                })
+                navigate('/');
             })
      };
   return (
@@ -31,6 +39,18 @@ const SignUp = () => {
               </label>
               <input
                 {...register("name", { required: true })}
+                type="text"
+                placeholder="Full Name"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                {...register("photoURL", { required: true })}
                 type="text"
                 placeholder="Full Name"
                 className="input input-bordered"
@@ -75,6 +95,12 @@ const SignUp = () => {
                 value="Sign Up"
               />
             </div>
+            <p>
+              Already have an account?{" "}
+              <Link to="/login">
+                <button className="bg-orange-500 text-white btn">Login!</button>
+              </Link>
+            </p>
           </form>
         </div>
       </div>

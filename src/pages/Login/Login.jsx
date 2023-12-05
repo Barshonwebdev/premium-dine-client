@@ -6,7 +6,7 @@ import {
 } from 'react-simple-captcha';
 import { AuthContext } from '../../context/AuthProvider';
 import { Helmet } from 'react-helmet-async';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
   const captchaRef=useRef();
   const [disabled,setDisabled]=useState(true);
@@ -89,7 +89,6 @@ const Login = () => {
                   required
                   onBlur={handleCaptcha}
                 />
-                
               </div>
               <div className="form-control mt-6">
                 <input
@@ -99,6 +98,14 @@ const Login = () => {
                   disabled={disabled}
                 />
               </div>
+              <p>
+                Already have an account?{" "}
+                <Link to="/signup">
+                  <button className="bg-orange-500 text-white btn">
+                    Sign Up!
+                  </button>
+                </Link>
+              </p>
             </form>
           </div>
         </div>
