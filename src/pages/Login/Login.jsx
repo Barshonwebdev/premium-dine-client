@@ -12,7 +12,7 @@ const Login = () => {
   const [disabled,setDisabled]=useState(true);
   const location=useLocation();
   const navigate=useNavigate();
-  const {signInUser}= useContext(AuthContext);
+  const {signInUser,googleSignIn}= useContext(AuthContext);
 
   const from=location.state?.from?.pathname || '/';
   useEffect(()=>{
@@ -43,6 +43,15 @@ const Login = () => {
       else {
         setDisabled(true);
       }
+    }
+
+    const handleGoogleSignIn=()=>{
+      googleSignIn()
+      .then(result=>{
+        const loggedInUser=result.user;
+        console.log(loggedInUser);
+        navigate(from, { replace: true });
+      })
     }
     return (
       <div className="hero min-h-screen ">
@@ -98,6 +107,8 @@ const Login = () => {
                   disabled={disabled}
                 />
               </div>
+              <p>Or,</p>
+              <button onClick={handleGoogleSignIn} className='btn btn-neutral bg-blue-700'>Google Sign In</button>
               <p>
                 Already have an account?{" "}
                 <Link to="/signup">
