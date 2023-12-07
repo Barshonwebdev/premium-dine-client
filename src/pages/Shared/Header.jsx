@@ -30,11 +30,14 @@ const Header = () => {
             <button className="btn btn-ghost">Our Shop</button>
           </Link>
         </li>
-        <button className="btn">
-          <FaShoppingCart className="text-green-800 text-xl"></FaShoppingCart>
-          <div className="badge badge-neutral">+{cart?.length || 0}</div>
-        </button>
-        <li> 
+        <Link to='/dashboard/mycart'>
+          {" "}
+          <button className="btn">
+            <FaShoppingCart className="text-green-800 text-xl"></FaShoppingCart>
+            <div className="badge badge-neutral">+{cart?.length || 0}</div>
+          </button>
+        </Link>
+        <li>
           {user ? (
             <>
               <Link>
