@@ -5,8 +5,10 @@ import { SlCalender } from "react-icons/sl";
 import { FaShoppingCart } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { PiBowlFoodFill } from "react-icons/pi";
+import useCart from "../hooks/useCart";
 
 const DashBoard = () => {
+  const [cart]=useCart();
     return (
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -43,7 +45,10 @@ const DashBoard = () => {
             </li>
             <li>
               <NavLink to="/dashboard/mycart">
-                <FaShoppingCart></FaShoppingCart>My Cart
+                <FaShoppingCart></FaShoppingCart>My Cart{""}
+                <span className="badge badge-neutral">
+                  +{cart?.length || 0}
+                </span>
               </NavLink>
             </li>
 
