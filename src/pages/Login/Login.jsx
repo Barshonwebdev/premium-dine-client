@@ -65,8 +65,8 @@ const Login = () => {
           body: JSON.stringify(savedUser),
         })
           .then((res) => res.json())
-          .then((data) => {
-            if (data.insertedId) {
+          .then(() => {
+           
               reset();
               Swal.fire({
                 position: "top-end",
@@ -76,7 +76,7 @@ const Login = () => {
                 timer: 1500,
               });
               navigate(from, { replace: true });
-            }
+            
           });
        
       })
