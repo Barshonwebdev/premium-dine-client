@@ -68,13 +68,6 @@ const Login = () => {
           .then(() => {
            
               reset();
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "You have been Registered!",
-                showConfirmButton: false,
-                timer: 1500,
-              });
               navigate(from, { replace: true });
             
           });
