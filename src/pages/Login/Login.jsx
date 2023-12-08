@@ -4,10 +4,14 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from 'react-simple-captcha';
+ 
 import { AuthContext } from '../../context/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
 const Login = () => {
+  const { reset } = useForm();
   const captchaRef=useRef();
   const [disabled,setDisabled]=useState(true);
   const location=useLocation();
@@ -46,11 +50,35 @@ const Login = () => {
     }
 
     const handleGoogleSignIn=()=>{
+      
       googleSignIn()
       .then(result=>{
         const loggedInUser=result.user;
         console.log(loggedInUser);
-        navigate(from, { replace: true });
+        const savedUser = { name: loggedInUser.displayName, email: loggedInUser.email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+
+          body: JSON.stringify(savedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "You have been Registered!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate(from, { replace: true });
+            }
+          });
+       
       })
     }
     return (
@@ -110,7 +138,7 @@ const Login = () => {
               <p>Or,</p>
               <button onClick={handleGoogleSignIn} className='btn btn-neutral bg-blue-700'>Google Sign In</button>
               <p>
-                Already have an account?{" "}
+                New here?{" "}
                 <Link to="/signup">
                   <button className="bg-orange-500 text-white btn">
                     Sign Up!
