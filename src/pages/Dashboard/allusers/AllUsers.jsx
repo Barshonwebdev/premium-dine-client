@@ -29,7 +29,22 @@ const AllUsers = () => {
         })
     }
     const handleDelete=(user)=>{
-
+      fetch(`http://localhost:5000/users/admin/${user._id}`,{
+        method:'DELETE',
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        if(data.deletedCount>0){
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} has been deleted `,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
     }
     return (
       <div>
