@@ -44,9 +44,9 @@ const Mycart = () => {
         <Helmet>
           <title>Premium Dine | My Cart </title>
         </Helmet>
-        <div className="uppercase font-bold flex justify-evenly ">
-          <h3 className="text-3xl">Total items: {cart.length}</h3>
-          <h3 className="text-3xl">Total Price: $ {total}</h3>
+        <div className="uppercase font-bold flex justify-evenly w-full ">
+          <h3 className="text-3xl">Total items: {cart.length}| </h3>
+          <h3 className="text-3xl">Total Price: $ {total}| </h3>
           <button className="btn btn-success">Pay</button>
         </div>
         <div className="overflow-x-auto">
