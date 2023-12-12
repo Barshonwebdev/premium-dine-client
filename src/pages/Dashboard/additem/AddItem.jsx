@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 import SectionTitle from '../../../components/Sectiontitle/SectionTitle';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 
@@ -7,12 +9,14 @@ const AddItem = () => {
 
      const {
        register,
+       reset,
        handleSubmit,
        formState: { errors },
      } = useForm();
      const onSubmit = (data) => {
         console.log(data);
         const formData= new FormData();
+        console.log(formData);
         formData.append('image', data.image[0]);
 
         fetch(img_hosting_url, {
@@ -22,11 +26,29 @@ const AddItem = () => {
         .then(res=>res.json())
         .then(imgResponse=>{
             console.log(imgResponse);
+            reset();
+            if(imgResponse.success){
+              const imgURL=imgResponse.data.display_url;
+              const {name,price,category,recipe}=data;
+              const newItem={name, price: parseFloat(price), category,recipe, image:imgURL};
+              console.log(newItem);
+              axios.post("http://localhost:5000/menu",newItem)
+              .then(data=>{if(data.data.insertedId){
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Item added!",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }}) 
+              
+            }
         })
         
     };
 
-     const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`;
+     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
     return (
       <div className="w-full px-8">
         <SectionTitle
@@ -53,11 +75,11 @@ const AddItem = () => {
                 <option disabled selected>
                   category
                 </option>
-                <option>Salad</option>
-                <option>Pizza</option>
-                <option>Soup</option>
-                <option>Dessert</option>
-                <option>Drinks</option>
+                <option>salad</option>
+                <option>pizza</option>
+                <option>soup</option>
+                <option>dessert</option>
+                <option>drinks</option>
               </select>
             </div>
             <div className="form-control w-full max-w-xs">
