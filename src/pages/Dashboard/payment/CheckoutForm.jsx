@@ -2,8 +2,9 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
-const CheckoutForm = ({price}) => {
+const CheckoutForm = ({price,cart}) => {
   const {user}=useAuth();
     const [cardError, setCardError] = useState("");
     const [transaction,setTransaction]=useState('');
@@ -76,6 +77,30 @@ const CheckoutForm = ({price}) => {
          setProcessing(false);
          if(paymentIntent.status==='succeeded'){
           setTransaction(paymentIntent.id);
+
+          const payment={
+            email:user?.email,
+            transactionId:paymentIntent.id,
+            price,
+            quantity:cart.length,
+            items:cart.map(item=>item._id),
+            itemNames:cart.map(item=>item.name)
+
+          }
+
+          axios.post('http://localhost:5000/payment',payment)
+          .then(res=>{
+            console.log(res);
+            if(res.statusText==='OK'){
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your payment is completed",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          })
          }
          
     }

@@ -16,7 +16,7 @@ const Payment = () => {
         <div className='w-full px-10'>
             <SectionTitle subHeading={'please pay by your card'} heading={'Payment'}></SectionTitle>
             <Elements stripe={stripePromise}>
-                <CheckoutForm price={price}></CheckoutForm>
+                <CheckoutForm cart={cart} price={price}></CheckoutForm>
             </Elements>
         </div>
     );
