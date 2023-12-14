@@ -1,9 +1,13 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import useAuth from '../../../hooks/useAuth';
 
 const CheckoutForm = ({price}) => {
+  const {user}=useAuth();
     const [cardError, setCardError] = useState("");
+    const [transaction,setTransaction]=useState('');
+    const [processing,setProcessing]=useState(false);
     const stripe=useStripe();
     const elements=useElements();
 
@@ -49,6 +53,30 @@ const CheckoutForm = ({price}) => {
             setCardError('');
             console.log(paymentMethod);
         }
+        setProcessing(true);
+        const { paymentIntent, error :confirmError} = await stripe.confirmCardPayment(
+          clientSecret,
+          {
+            payment_method: {
+              card: card,
+              billing_details: {
+                email: user?.email || 'unknown',
+                name: user?.displayName || 'anonymous',
+              },
+            },
+          }
+
+         
+        );
+         if (confirmError) {
+           console.log(confirmError);
+         }
+
+         console.log(paymentIntent);
+         setProcessing(false);
+         if(paymentIntent.status==='succeeded'){
+          setTransaction(paymentIntent.id);
+         }
          
     }
 
@@ -77,12 +105,15 @@ const CheckoutForm = ({price}) => {
           <button
             className="btn btn-primary btn-sm mt-5 hover:bg-blue-950"
             type="submit"
-            disabled={!stripe || !clientSecret}
+            disabled={!stripe || !clientSecret ||processing}
           >
             Pay
           </button>
         </form>
         <div>{cardError && <p className='text-red-700 mt-2'>{cardError}</p>}</div>
+        {
+          transaction && <div><p className='text-green-500'>Payment successful. ID: {transaction}</p></div>
+        }
       </>
     );
 };
