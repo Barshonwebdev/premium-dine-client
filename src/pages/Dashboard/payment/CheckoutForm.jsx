@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
 
+
 const CheckoutForm = ({price,cart}) => {
+  console.log(cart);
   const {user}=useAuth();
     const [cardError, setCardError] = useState("");
     const [transaction,setTransaction]=useState('');
@@ -82,8 +84,11 @@ const CheckoutForm = ({price,cart}) => {
             email:user?.email,
             transactionId:paymentIntent.id,
             price,
+            date:new Date(),
             quantity:cart.length,
-            items:cart.map(item=>item._id),
+            cartItems:cart.map(item=>item._id),
+            menuItems:cart.map(item=>item.menuId),
+            status: 'service pending',
             itemNames:cart.map(item=>item.name)
 
           }
@@ -128,7 +133,7 @@ const CheckoutForm = ({price,cart}) => {
             }}
           />
           <button
-            className="btn btn-primary btn-sm mt-5 hover:bg-blue-950"
+            className="btn btn-primary btn-sm hover:bg-blue-950"
             type="submit"
             disabled={!stripe || !clientSecret ||processing}
           >
@@ -137,7 +142,7 @@ const CheckoutForm = ({price,cart}) => {
         </form>
         <div>{cardError && <p className='text-red-700 mt-2'>{cardError}</p>}</div>
         {
-          transaction && <div><p className='text-green-500'>Payment successful. ID: {transaction}</p></div>
+          transaction && <p className='text-green-500'>Payment successful. ID: {transaction}</p>
         }
       </>
     );
