@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 
 const Header = () => {
+  const [isAdmin]=useAdmin();
   const {user,logout}=useContext(AuthContext);
   const [cart]=useCart();
   const handleLogout=()=>{
@@ -30,7 +32,14 @@ const Header = () => {
             <button className="btn btn-ghost">Our Shop</button>
           </Link>
         </li>
-        <Link to='/dashboard/mycart'>
+        <li>
+          {
+            <Link to={isAdmin? '/dashboard/adminhome' : '/dashboard/userhome'}>
+              <button className="btn btn-ghost">Dashboard</button>
+            </Link>
+          }
+        </li>
+        <Link to="/dashboard/mycart">
           {" "}
           <button className="btn">
             <FaShoppingCart className="text-green-800 text-xl"></FaShoppingCart>
