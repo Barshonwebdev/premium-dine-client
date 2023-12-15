@@ -34,18 +34,20 @@ const Header = () => {
         </li>
         <li>
           {
-            <Link to={isAdmin? '/dashboard/adminhome' : '/dashboard/userhome'}>
+            <Link to={isAdmin ? "/dashboard/adminhome" : "/dashboard/userhome"}>
               <button className="btn btn-ghost">Dashboard</button>
             </Link>
           }
         </li>
-        <Link to="/dashboard/mycart">
-          {" "}
-          <button className="btn">
-            <FaShoppingCart className="text-green-800 text-xl"></FaShoppingCart>
-            <div className="badge badge-neutral">+{cart?.length || 0}</div>
-          </button>
-        </Link>
+        {!isAdmin && (
+          <Link to="/dashboard/mycart">
+            {" "}
+            <button className="btn">
+              <FaShoppingCart className="text-green-800 text-xl"></FaShoppingCart>
+              <div className="badge badge-neutral">+{cart?.length || 0}</div>
+            </button>
+          </Link>
+        )}
         <li>
           {user ? (
             <>
