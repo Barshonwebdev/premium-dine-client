@@ -7,7 +7,7 @@ const PopularMenu = () => {
     const popular=menu.filter(item=>item.category==="popular");
    
     return (
-        <div className='mb-10'>
+        <div className='mb-10 mx-3'>
             <section>
                 <SectionTitle heading={'From our menu'} subHeading={'Popular Items'}></SectionTitle>
             </section>

@@ -27,7 +27,7 @@ const Featured = () => {
               well with all our guests pallate and they indulge in the most
               authentic experience of duck roast.
             </p>
-            <button className="btn btn-outline text-white text-xl italic border-0 border-b-4 my-5">Order Now</button>
+            
           </div>
         </section>
       </div>

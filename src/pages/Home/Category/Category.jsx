@@ -14,7 +14,7 @@ import slide4 from '../../../assets/home/slide4.jpg'
 import SectionTitle from '../../../components/Sectiontitle/SectionTitle';
 const Category = () => {
     return (
-      <section>
+      <section className='mx-4'>
         <SectionTitle
           subHeading={"From 11:00 pm tp 10:00 am "}
           heading={"Order Online"}
@@ -26,7 +26,7 @@ const Category = () => {
             clickable: true,
           }}
           modules={[Pagination]}
-          className="mySwiper md:mb-20 mb-8 "
+          className="mySwiper md:mb-20 mb-8  "
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log("slide change")}
         >
