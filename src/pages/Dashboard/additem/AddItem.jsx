@@ -55,7 +55,7 @@ const AddItem = () => {
           subHeading={"What`s new?"}
           heading={"Add an Item"}
         ></SectionTitle>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-stone-300 p-5 rounded-xl">
           <div className="form-control w-full max-w-xs">
             <label className="label">Recipe Name*</label>
             <input
@@ -108,8 +108,9 @@ const AddItem = () => {
               className="file-input w-full max-w-xs"
             />
           </div>
-          <input className="btn btn-primary" type="submit" value="Add Item" />
+          <input className="btn btn-primary " type="submit" value="Add Item" />
         </form>
+        <div className='mt-5'><p>*required inputs</p></div>
       </div>
     );
 };

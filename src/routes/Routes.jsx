@@ -16,6 +16,7 @@ import ManageItems from "../pages/Dashboard/manageItems/ManageItems";
 import Payment from "../pages/Dashboard/payment/Payment";
 import Userhome from "../pages/Dashboard/Userhome/Userhome";
 import Adminhome from "../pages/Dashboard/Adminhome/Adminhome";
+import Notfound from "../pages/404/Notfound";
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:'*',
+    element:<Notfound></Notfound>
+  }
 ]);
 
 export default router;

@@ -9,9 +9,9 @@ import { useParams } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 
 const Shop = () => {
+  const {category}=useParams();
     const categories=['salad', 'pizza', 'soup', 'dessert', 'drinks'];
     const [menu]=useMenu();
-    const {category}=useParams();
     const initialIndex=categories.indexOf(category);
     const [tabIndex,setTabIndex]= useState(initialIndex);
     console.log(category);

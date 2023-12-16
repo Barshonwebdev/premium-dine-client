@@ -1,13 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { RiWallet3Line } from "react-icons/ri";
-import { SlCalender } from "react-icons/sl";
 import { FaShoppingCart } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { PiBowlFoodFill } from "react-icons/pi";
 import useCart from "../hooks/useCart";
 import { FaUtensils } from "react-icons/fa";
-import { IoMdBook } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import useAdmin from "../hooks/useAdmin";
 
@@ -36,7 +34,7 @@ const DashBoard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-52 md:w-80 min-h-full  text-white">
+          <ul className="menu p-4 w-52 md:w-80 min-h-full font-semibold ">
             {isAdmin ? (
               <>
                 <li>
@@ -54,11 +52,7 @@ const DashBoard = () => {
                     <RiWallet3Line></RiWallet3Line>Manage Items
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/dashboard/bookings">
-                    <IoMdBook></IoMdBook>Manage Bookings
-                  </NavLink>
-                </li>
+                
                 <li>
                   <NavLink to="/dashboard/allusers">
                     <FaUser></FaUser> All Users
@@ -68,17 +62,13 @@ const DashBoard = () => {
             ) : (
               <>
                 <li>
-                  <NavLink to="/dashboard/home">
+                  <NavLink to="/dashboard/userhome">
                     <FaHome></FaHome>User Home
                   </NavLink>
                 </li>
+                
                 <li>
-                  <NavLink to="/dashboard/reservations">
-                    <SlCalender></SlCalender>Reservations
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/payment">
+                  <NavLink to="/dashboard/paymenthistory">
                     <RiWallet3Line></RiWallet3Line>Payment History
                   </NavLink>
                 </li>
@@ -102,12 +92,12 @@ const DashBoard = () => {
             </li>
             <li>
               <NavLink to="/menu">
-                <GiHamburgerMenu></GiHamburgerMenu>Our Menu
+                <GiHamburgerMenu></GiHamburgerMenu> Menu
               </NavLink>
             </li>
             <li>
               <NavLink to="/shop/salad">
-                <PiBowlFoodFill></PiBowlFoodFill>Order Food
+                <PiBowlFoodFill></PiBowlFoodFill>Order 
               </NavLink>
             </li>
           </ul>
