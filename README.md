@@ -1,8 +1,21 @@
-# React + Vite
+Premium Dine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Restaurant website made with MERN . 
 
-Currently, two official plugins are available:
+• Login system using email/pass or gmail
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+• Separate dashboard for admin and users
+
+• Payment system using cards (stripe)
+
+• Menu item add and delete system for admins
+
+• cart item add and delete system for users
+
+• payment history system for users
+
+• Attractive UI
+
+• Easy navigation system
+
+Webapp Link: https://premium-dine.web.app

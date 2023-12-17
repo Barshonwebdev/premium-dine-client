@@ -6,49 +6,45 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-     const {
-       register,
-       handleSubmit,
-       reset,
-       formState: { errors },
-     } = useForm();
-     const {createUser,updateUserProfile}=useContext(AuthContext);
-     const navigate=useNavigate();
-     const onSubmit = (data) => {
-            createUser(data.email,data.password)
-            .then(result=>{
-                const loggedInUser=result.user;
-                console.log(loggedInUser);
-                updateUserProfile(data.name,data.photoURL)
-                .then(()=>{
-                    const savedUser={name:data.name,email:data.email};
-                    fetch("http://localhost:5000/users", {
-                      method: "POST",
-                      headers: {
-                        "content-type": "application/json",
-                      },
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const onSubmit = (data) => {
+    createUser(data.email, data.password).then((result) => {
+      const loggedInUser = result.user;
+      console.log(loggedInUser);
+      updateUserProfile(data.name, data.photoURL).then(() => {
+        const savedUser = { name: data.name, email: data.email };
+        fetch("https://premium-dine-server-production.up.railway.app/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
 
-                      body: JSON.stringify(savedUser),
-                    })
-                      .then((res) => res.json())
-                      .then((data) => {
-                        if (data.insertedId) {
-                          reset();
-                          Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "You have been Registered!",
-                            showConfirmButton: false,
-                            timer: 1500,
-                          });
-                          navigate("/");
-                        }
-                      });
-                   
-                })
-                
-            })
-     };
+          body: JSON.stringify(savedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "You have been Registered!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
+      });
+    });
+  };
   return (
     <div className="hero min-h-screen ">
       <div className="hero-content flex-col md:space-x-28 lg:flex-row-reverse">

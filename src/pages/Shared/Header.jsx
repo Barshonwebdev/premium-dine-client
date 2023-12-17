@@ -33,8 +33,8 @@ const Header = () => {
           </Link>
         </li>
         <li>
-          {
-            <Link to={isAdmin ? "/dashboard/adminhome" : "/dashboard/userhome"}>
+          { isAdmin &&
+            <Link to= "/dashboard/adminhome" >
               <button className="btn btn-ghost">Dashboard</button>
             </Link>
           }
