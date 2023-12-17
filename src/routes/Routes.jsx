@@ -17,6 +17,7 @@ import Payment from "../pages/Dashboard/payment/Payment";
 import Userhome from "../pages/Dashboard/Userhome/Userhome";
 import Adminhome from "../pages/Dashboard/Adminhome/Adminhome";
 import Notfound from "../pages/404/Notfound";
+import PaymentHistory from "../pages/Dashboard/payment-history/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: "userhome",
         element: <Userhome></Userhome>,
+      },
+      {
+        path: "paymenthistory",
+        element: <PaymentHistory></PaymentHistory>,
       },
       {
         path: "adminhome",

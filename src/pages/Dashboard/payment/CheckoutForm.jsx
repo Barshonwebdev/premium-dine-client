@@ -84,7 +84,7 @@ const CheckoutForm = ({price,cart}) => {
             email:user?.email,
             transactionId:paymentIntent.id,
             price,
-            date:new Date(),
+            date:new Date().toDateString(),
             quantity:cart.length,
             cartItems:cart.map(item=>item._id),
             menuItems:cart.map(item=>item.menuId),
