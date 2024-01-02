@@ -53,7 +53,7 @@ const Login = () => {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
       };
-      fetch("https://premium-dine-server-production.up.railway.app/users", {
+      fetch("https://premium-dine.onrender.com/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

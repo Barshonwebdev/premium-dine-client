@@ -13,7 +13,7 @@ const FoodCard = ({ item }) => {
   const handleaddToCart = () => {
     if (user && user.email) {
       const cartItem = { menuId: _id, name, image, price, email: user.email };
-      fetch("https://premium-dine-server-production.up.railway.app/cart", {
+      fetch("https://premium-dine.onrender.com/cart", {
         method: "POST",
         headers: {
           "content-type": "application/json",

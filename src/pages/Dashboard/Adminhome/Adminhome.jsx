@@ -9,7 +9,7 @@ const Adminhome = () => {
     queryKey: ["admin-dashboard"],
     queryFn: async () => {
       const res = await fetch(
-        "https://premium-dine-server-production.up.railway.app/admin-dashboard"
+        "https://premium-dine.onrender.com/admin-dashboard"
       );
 
       return res.json();

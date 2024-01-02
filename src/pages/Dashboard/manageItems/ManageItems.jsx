@@ -17,12 +17,9 @@ const ManageItems = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://premium-dine-server-production.up.railway.app/menu/${item._id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`https://premium-dine.onrender.com/menu/${item._id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {

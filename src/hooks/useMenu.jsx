@@ -5,7 +5,7 @@ const useMenu = () => {
   /*  const [menu, setMenu] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-      fetch("https://premium-dine-server-production.up.railway.app/menu")
+      fetch("https://premium-dine.onrender.com/menu")
         .then((res) => res.json())
         .then((data) => {
           setMenu(data);
@@ -20,7 +20,7 @@ const useMenu = () => {
   } = useQuery({
     queryKey: ["menu"],
     queryFn: async () => {
-      const res = await fetch("https://premium-dine-server-production.up.railway.app/menu");
+      const res = await fetch("https://premium-dine.onrender.com/menu");
       return res.json();
     },
   });

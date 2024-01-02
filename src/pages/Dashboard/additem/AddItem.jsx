@@ -38,10 +38,7 @@ const AddItem = () => {
           };
           console.log(newItem);
           axios
-            .post(
-              "https://premium-dine-server-production.up.railway.app/menu",
-              newItem
-            )
+            .post("https://premium-dine.onrender.com/menu", newItem)
             .then((data) => {
               if (data.data.insertedId) {
                 Swal.fire({

@@ -20,7 +20,7 @@ const SignUp = () => {
       console.log(loggedInUser);
       updateUserProfile(data.name, data.photoURL).then(() => {
         const savedUser = { name: data.name, email: data.email };
-        fetch("https://premium-dine-server-production.up.railway.app/users", {
+        fetch("https://premium-dine.onrender.com/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -8,20 +8,15 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch(
-        "https://premium-dine-server-production.up.railway.app/users"
-      );
+      const res = await fetch("https://premium-dine.onrender.com/users");
       return res.json();
     },
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(
-      `https://premium-dine-server-production.up.railway.app/users/admin/${user._id}`,
-      {
-        method: "PATCH",
-      }
-    )
+    fetch(`https://premium-dine.onrender.com/users/admin/${user._id}`, {
+      method: "PATCH",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -37,12 +32,9 @@ const AllUsers = () => {
       });
   };
   const handleDelete = (user) => {
-    fetch(
-      `https://premium-dine-server-production.up.railway.app/users/admin/${user._id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`https://premium-dine.onrender.com/users/admin/${user._id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

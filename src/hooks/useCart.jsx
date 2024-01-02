@@ -8,7 +8,7 @@ const useCart = () => {
     queryKey: ["carts", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `https://premium-dine-server-production.up.railway.app/cart?email=${user?.email}`
+        `https://premium-dine.onrender.com/cart?email=${user?.email}`
       );
       return res.json();
     },

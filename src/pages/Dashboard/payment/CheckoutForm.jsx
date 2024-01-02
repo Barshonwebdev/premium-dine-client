@@ -17,14 +17,11 @@ const CheckoutForm = ({ price, cart }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch(
-      "https://premium-dine-server-production.up.railway.app/create-payment-intent",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ price }),
-      }
-    )
+    fetch("https://premium-dine.onrender.com/create-payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ price }),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data.clientSecret);
@@ -88,10 +85,7 @@ const CheckoutForm = ({ price, cart }) => {
       };
 
       axios
-        .post(
-          "https://premium-dine-server-production.up.railway.app/payment",
-          payment
-        )
+        .post("https://premium-dine.onrender.com/payment", payment)
         .then((res) => {
           console.log(res);
           if (res.statusText === "OK") {

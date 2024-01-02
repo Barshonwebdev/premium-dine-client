@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post("https://premium-dine-server-production.up.railway.app/jwt", {
+          .post("https://premium-dine.onrender.com/jwt", {
             Email: currentUser.email,
           })
           .then((data) => {
