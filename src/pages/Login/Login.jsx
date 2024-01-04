@@ -53,7 +53,7 @@ const Login = () => {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
       };
-      fetch("https://premium-dine.onrender.com/users", {
+      fetch("https://premium-dine-server.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

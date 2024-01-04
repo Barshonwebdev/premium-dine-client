@@ -8,13 +8,13 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("https://premium-dine.onrender.com/users");
+      const res = await fetch("https://premium-dine-server.vercel.app/users");
       return res.json();
     },
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`https://premium-dine.onrender.com/users/admin/${user._id}`, {
+    fetch(`https://premium-dine-server.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -32,7 +32,7 @@ const AllUsers = () => {
       });
   };
   const handleDelete = (user) => {
-    fetch(`https://premium-dine.onrender.com/users/admin/${user._id}`, {
+    fetch(`https://premium-dine-server.vercel.app/users/admin/${user._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

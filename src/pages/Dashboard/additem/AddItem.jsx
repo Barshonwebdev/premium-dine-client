@@ -38,7 +38,7 @@ const AddItem = () => {
           };
           console.log(newItem);
           axios
-            .post("https://premium-dine.onrender.com/menu", newItem)
+            .post("https://premium-dine-server.vercel.app/menu", newItem)
             .then((data) => {
               if (data.data.insertedId) {
                 Swal.fire({

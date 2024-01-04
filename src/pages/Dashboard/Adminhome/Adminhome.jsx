@@ -9,7 +9,7 @@ const Adminhome = () => {
     queryKey: ["admin-dashboard"],
     queryFn: async () => {
       const res = await fetch(
-        "https://premium-dine.onrender.com/admin-dashboard"
+        "https://premium-dine-server.vercel.app/admin-dashboard"
       );
 
       return res.json();

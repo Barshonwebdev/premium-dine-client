@@ -17,7 +17,7 @@ const CheckoutForm = ({ price, cart }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("https://premium-dine.onrender.com/create-payment-intent", {
+    fetch("https://premium-dine-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ price }),
@@ -85,7 +85,7 @@ const CheckoutForm = ({ price, cart }) => {
       };
 
       axios
-        .post("https://premium-dine.onrender.com/payment", payment)
+        .post("https://premium-dine-server.vercel.app/payment", payment)
         .then((res) => {
           console.log(res);
           if (res.statusText === "OK") {

@@ -18,7 +18,7 @@ const Mycart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://premium-dine.onrender.com/cart/${item._id}`, {
+        fetch(`https://premium-dine-server.vercel.app/cart/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

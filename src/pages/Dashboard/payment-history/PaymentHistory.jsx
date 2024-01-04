@@ -7,7 +7,7 @@ const PaymentHistory = () => {
   const { user } = useAuth();
   useEffect(() => {
     axios(
-      `https://premium-dine.onrender.com/paymenthistory?email=${user.email}`
+      `https://premium-dine-server.vercel.app/paymenthistory?email=${user.email}`
     ).then((res) => {
       console.log(res.data);
       const allPayments = res.data;
