@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, ScrollRestoration } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { RiWallet3Line } from "react-icons/ri";
 import { FaShoppingCart } from "react-icons/fa";
@@ -96,6 +96,7 @@ const DashBoard = () => {
             </li>
           </ul>
         </div>
+        <ScrollRestoration></ScrollRestoration>
       </div>
     );
 };

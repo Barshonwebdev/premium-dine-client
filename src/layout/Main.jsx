@@ -1,5 +1,5 @@
 import Header from '../pages/Shared/Header';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import Footer from '../pages/Shared/Footer';
 
 const Main = () => {
@@ -10,6 +10,7 @@ const Main = () => {
         {noHeaderFooter || <Header></Header>}
         <Outlet></Outlet>
         {noHeaderFooter || <Footer></Footer>}
+        <ScrollRestoration></ScrollRestoration>
       </div>
     );
 };
