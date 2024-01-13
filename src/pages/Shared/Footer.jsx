@@ -51,7 +51,7 @@ const Footer = () => {
           </nav>
         </footer>
         <div className="footer  p-10 bg-neutral text-neutral-content">
-          <p>Copyright © 2023 - All right reserved</p>
+          <p>Copyright © 2024 - All right reserved</p>
         </div>
       </div>
     );
